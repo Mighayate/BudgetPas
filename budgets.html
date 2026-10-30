@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anggaran Bulanan — BudgetPas</title>
+  
+  <!-- Fonts: DM Sans & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="budgets">
+
+<div class="app-shell">
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Sidebar Navigasi -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-icon">▣</span>
+      <span>Budget<span class="brand-light">Pas</span></span>
+      <span class="brand-tag">WEB APP</span>
+    </div>
+
+    <div class="side-caption">MENU UTAMA</div>
+    
+    <nav>
+      <a href="index.html" data-view="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="budgets.html" data-view="budgets" class="active">
+        <span class="nav-icon">▦</span>
+        <span>Anggaran Bulanan</span>
+      </a>
+      <a href="transactions.html" data-view="transactions">
+        <span class="nav-icon">↕</span>
+        <span>Catat Transaksi</span>
+      </a>
+      <a href="reports.html" data-view="reports">
+        <span class="nav-icon">▥</span>
+        <span>Laporan Pengeluaran</span>
+      </a>
+      <a href="reminders.html" data-view="reminders">
+        <span class="nav-icon">♧</span>
+        <span>Pengingat Anggaran</span>
+      </a>
+      <a href="goals.html" data-view="goals">
+        <span class="nav-icon">◎</span>
+        <span>Target Tabungan</span>
+      </a>
+      <a href="calendar.html" data-view="calendar">
+        <span class="nav-icon">📅</span>
+        <span>Kalender Keuangan</span>
+      </a>
+      <a href="settings.html" data-view="settings">
+        <span class="nav-icon">⚙</span>
+        <span>Pengaturan & Data</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="student-card">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="student-info">
+          <b id="sidebarStudentName">Andi Pratama</b>
+          <small>Mahasiswa Kos</small>
+        </div>
+      </div>
+      <div class="side-note">
+        <span>✦</span>
+        <p><b>Kelola uang, raih masa depan.</b><br>Mulai dari kebiasaan kecil hari ini.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">☰</button>
+        <div class="mobile-brand">▣ BudgetPas</div>
+        <div class="breadcrumb">
+          Keuangan Saya <span>/</span> <b id="breadcrumbTitle">Anggaran Bulanan</b>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <span class="status-pill">Data tersimpan di browser</span>
+        <div class="top-avatar">A</div>
+        <div class="profile-name">
+          <b id="topbarStudentName">Andi Pratama</b>
+          <small>Mahasiswa</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <section class="page-content">
+      <div class="view-section active" id="view-budgets">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">RENCANAKAN UANGMU</div>
+            <h1>Anggaran Bulanan</h1>
+            <p class="muted">Bagi uang bulanan sesuai kebutuhan dan prioritas hidupmu.</p>
+          </div>
+        </div>
+
+        <div class="stat-grid three">
+          <div class="stat-card green">
+            <div class="stat-top">
+              <span>Total Anggaran</span>
+              <span class="stat-icon">▦</span>
+            </div>
+            <div class="stat-value" id="budgetTotalAmount">Rp 0</div>
+            <div class="stat-foot">Batas dari seluruh kategori</div>
+          </div>
+          <div class="stat-card rose">
+            <div class="stat-top">
+              <span>Total Terpakai</span>
+              <span class="stat-icon">↘</span>
+            </div>
+            <div class="stat-value" id="budgetTotalSpent">Rp 0</div>
+            <div class="stat-foot">Akumulasi pengeluaran aktual</div>
+          </div>
+          <div class="stat-card blue">
+            <div class="stat-top">
+              <span>Sisa Anggaran</span>
+              <span class="stat-icon">◈</span>
+            </div>
+            <div class="stat-value" id="budgetTotalRemaining">Rp 0</div>
+            <div class="stat-foot">Sisa kuota dari batas anggaran</div>
+          </div>
+        </div>
+
+        <div class="content-grid budget-layout">
+          <!-- Pembagian Anggaran -->
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Pembagian Anggaran</h2>
+                <p>Status penggunaan anggaran setiap kategori.</p>
+              </div>
+            </div>
+            <div class="budget-list large" id="budgetRowsContainer">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Form Atur / Tambah Kategori -->
+          <div class="panel form-panel">
+            <div class="panel-head">
+              <div>
+                <h2>Atur Kategori & Batas</h2>
+                <p>Tambah kategori baru atau perbarui nominal.</p>
+              </div>
+            </div>
+            <form id="addBudgetForm" class="form-stack">
+              <div class="form-group">
+                <label for="budgetCategoryInput">Nama Kategori</label>
+                <input id="budgetCategoryInput" name="category" placeholder="Contoh: Laundry / Pulsa" required list="categorySuggestions">
+                <datalist id="categorySuggestions">
+                  <option value="Makan">
+                  <option value="Transportasi">
+                  <option value="Kuliah">
+                  <option value="Hiburan">
+                  <option value="Tabungan">
+                  <option value="Laundry">
+                  <option value="Pulsa & Kuota">
+                  <option value="Kos / Tempat Tinggal">
+                  <option value="Kesehatan">
+                </datalist>
+              </div>
+
+              <div class="form-group">
+                <label for="budgetAmountInput">Batas Anggaran (Rp)</label>
+                <div class="input-prefix">
+                  <span>Rp</span>
+                  <input id="budgetAmountInput" name="amount" inputmode="numeric" placeholder="Contoh: 150.000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="budgetColorInput">Warna Identitas Kategori</label>
+                <div class="color-picker-wrap">
+                  <input id="budgetColorInput" name="color" type="color" value="#128568" class="color-input">
+                  <div class="color-presets">
+                    <span class="color-swatch" style="background:#e45d65;" onclick="document.getElementById('budgetColorInput').value='#e45d65'"></span>
+                    <span class="color-swatch" style="background:#3498db;" onclick="document.getElementById('budgetColorInput').value='#3498db'"></span>
+                    <span class="color-swatch" style="background:#8b5cf6;" onclick="document.getElementById('budgetColorInput').value='#8b5cf6'"></span>
+                    <span class="color-swatch" style="background:#ec4899;" onclick="document.getElementById('budgetColorInput').value='#ec4899'"></span>
+                    <span class="color-swatch" style="background:#128568;" onclick="document.getElementById('budgetColorInput').value='#128568'"></span>
+                    <span class="color-swatch" style="background:#f0a52b;" onclick="document.getElementById('budgetColorInput').value='#f0a52b'"></span>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn primary full" type="submit">
+                Simpan Anggaran <span>→</span>
+              </button>
+            </form>
+            <div class="mini-tip">
+              <b>💡 Tips Finansial:</b> Sisihkan tabungan di awal bulan begitu menerima uang saku, bukan hanya dari uang yang tersisa di akhir bulan.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 BudgetPas — Prototipe Website Pengelolaan Keuangan Mahasiswa. <b>Kelola keuangan, raih masa depan.</b>
+    </footer>
+  </main>
+</div>
+
+<!-- Toast Notifications Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

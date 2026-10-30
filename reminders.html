@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengingat Anggaran — BudgetPas</title>
+  
+  <!-- Fonts: DM Sans & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="reminders">
+
+<div class="app-shell">
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Sidebar Navigasi -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-icon">▣</span>
+      <span>Budget<span class="brand-light">Pas</span></span>
+      <span class="brand-tag">WEB APP</span>
+    </div>
+
+    <div class="side-caption">MENU UTAMA</div>
+    
+    <nav>
+      <a href="index.html" data-view="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="budgets.html" data-view="budgets">
+        <span class="nav-icon">▦</span>
+        <span>Anggaran Bulanan</span>
+      </a>
+      <a href="transactions.html" data-view="transactions">
+        <span class="nav-icon">↕</span>
+        <span>Catat Transaksi</span>
+      </a>
+      <a href="reports.html" data-view="reports">
+        <span class="nav-icon">▥</span>
+        <span>Laporan Pengeluaran</span>
+      </a>
+      <a href="reminders.html" data-view="reminders" class="active">
+        <span class="nav-icon">♧</span>
+        <span>Pengingat Anggaran</span>
+      </a>
+      <a href="goals.html" data-view="goals">
+        <span class="nav-icon">◎</span>
+        <span>Target Tabungan</span>
+      </a>
+      <a href="calendar.html" data-view="calendar">
+        <span class="nav-icon">📅</span>
+        <span>Kalender Keuangan</span>
+      </a>
+      <a href="settings.html" data-view="settings">
+        <span class="nav-icon">⚙</span>
+        <span>Pengaturan & Data</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="student-card">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="student-info">
+          <b id="sidebarStudentName">Andi Pratama</b>
+          <small>Mahasiswa Kos</small>
+        </div>
+      </div>
+      <div class="side-note">
+        <span>✦</span>
+        <p><b>Kelola uang, raih masa depan.</b><br>Mulai dari kebiasaan kecil hari ini.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">☰</button>
+        <div class="mobile-brand">▣ BudgetPas</div>
+        <div class="breadcrumb">
+          Keuangan Saya <span>/</span> <b id="breadcrumbTitle">Pengingat Anggaran</b>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <span class="status-pill">Data tersimpan di browser</span>
+        <div class="top-avatar">A</div>
+        <div class="profile-name">
+          <b id="topbarStudentName">Andi Pratama</b>
+          <small>Mahasiswa</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <section class="page-content">
+      <div class="view-section active" id="view-reminders">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">JAGA PENGELUARAN TETAP TERKENDALI</div>
+            <h1>Pengingat Anggaran</h1>
+            <p class="muted">Perhatikan kategori yang mulai mendekati batas anggaran bulananmu.</p>
+          </div>
+        </div>
+
+        <!-- Dynamic Warning Banner (PRD Rule Alert) -->
+        <div id="remindersBannerWrap">
+          <!-- Rendered via JS based on >= 80% usage -->
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2>Status Anggaran Saat Ini</h2>
+              <p>Peringatan otomatis berdasarkan pengeluaran yang dicatat.</p>
+            </div>
+            <a class="text-link" href="budgets.html">Atur anggaran ↗</a>
+          </div>
+
+          <div class="reminder-list" id="reminderRowsContainer">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- PRD Rules Information Box -->
+        <div class="panel" style="margin-top: 20px; background: #fafcfb;">
+          <h2 style="font-size: 14px; margin-bottom: 8px;">Aturan Peringatan Sistem (PRD Section 5.5)</h2>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 12px;">
+            <div style="padding: 12px; background: #ffffff; border-radius: 8px; border: 1px solid var(--border-line);">
+              <span class="status-tag green">Aman</span>
+              <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+                Penggunaan di bawah <b>80%</b> dari batas anggaran.
+              </p>
+            </div>
+            <div style="padding: 12px; background: #ffffff; border-radius: 8px; border: 1px solid var(--border-line);">
+              <span class="status-tag yellow">Hampir habis</span>
+              <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+                Penggunaan mencapai <b>80% – 99%</b>. Waspadai pengeluaran tambahan.
+              </p>
+            </div>
+            <div style="padding: 12px; background: #ffffff; border-radius: 8px; border: 1px solid var(--border-line);">
+              <span class="status-tag red">Melebihi anggaran</span>
+              <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;">
+                Penggunaan mencapai <b>100% atau lebih</b>. Perlu evaluasi segera.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 BudgetPas — Prototipe Website Pengelolaan Keuangan Mahasiswa. <b>Kelola keuangan, raih masa depan.</b>
+    </footer>
+  </main>
+</div>
+
+<!-- Toast Notifications Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

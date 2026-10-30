@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kalender Keuangan — BudgetPas</title>
+  
+  <!-- Fonts: DM Sans & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="calendar">
+
+<div class="app-shell">
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Sidebar Navigasi -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-icon">▣</span>
+      <span>Budget<span class="brand-light">Pas</span></span>
+      <span class="brand-tag">WEB APP</span>
+    </div>
+
+    <div class="side-caption">MENU UTAMA</div>
+    
+    <nav>
+      <a href="index.html" data-view="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="budgets.html" data-view="budgets">
+        <span class="nav-icon">▦</span>
+        <span>Anggaran Bulanan</span>
+      </a>
+      <a href="transactions.html" data-view="transactions">
+        <span class="nav-icon">↕</span>
+        <span>Catat Transaksi</span>
+      </a>
+      <a href="reports.html" data-view="reports">
+        <span class="nav-icon">▥</span>
+        <span>Laporan Pengeluaran</span>
+      </a>
+      <a href="reminders.html" data-view="reminders">
+        <span class="nav-icon">♧</span>
+        <span>Pengingat Anggaran</span>
+      </a>
+      <a href="goals.html" data-view="goals">
+        <span class="nav-icon">◎</span>
+        <span>Target Tabungan</span>
+      </a>
+      <a href="calendar.html" data-view="calendar" class="active">
+        <span class="nav-icon">📅</span>
+        <span>Kalender Keuangan</span>
+      </a>
+      <a href="settings.html" data-view="settings">
+        <span class="nav-icon">⚙</span>
+        <span>Pengaturan & Data</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="student-card">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="student-info">
+          <b id="sidebarStudentName">Andi Pratama</b>
+          <small>Mahasiswa Kos</small>
+        </div>
+      </div>
+      <div class="side-note">
+        <span>✦</span>
+        <p><b>Kelola uang, raih masa depan.</b><br>Mulai dari kebiasaan kecil hari ini.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">☰</button>
+        <div class="mobile-brand">▣ BudgetPas</div>
+        <div class="breadcrumb">
+          Keuangan Saya <span>/</span> <b id="breadcrumbTitle">Kalender Keuangan</b>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <span class="status-pill">Data tersimpan di browser</span>
+        <div class="top-avatar">A</div>
+        <div class="profile-name">
+          <b id="topbarStudentName">Andi Pratama</b>
+          <small>Mahasiswa</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <section class="page-content">
+      <div class="view-section active" id="view-calendar">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">RENCANAKAN DARI SEKARANG</div>
+            <h1>Kalender Keuangan</h1>
+            <p class="muted">Lihat aktivitas pemasukan dan pengeluaran harian berdasarkan tanggal.</p>
+          </div>
+          <a class="btn primary" href="transactions.html">
+            ＋ Catat Transaksi
+          </a>
+        </div>
+
+        <div class="panel calendar-panel">
+          <div class="calendar-header">
+            <div>
+              <h2 id="calendarMonthTitle">Kalender Aktivitas</h2>
+              <p>Klik salah satu tanggal untuk melihat daftar transaksi pada hari tersebut.</p>
+            </div>
+            <div class="calendar-controls">
+              <button class="icon-btn" onclick="CalendarManager.prevMonth()" title="Bulan Sebelumnya">‹</button>
+              <button class="btn small outline" onclick="CalendarManager.today()">Hari Ini</button>
+              <button class="icon-btn" onclick="CalendarManager.nextMonth()" title="Bulan Berikutnya">›</button>
+            </div>
+          </div>
+
+          <!-- Grid Kalender -->
+          <div class="calendar-grid" id="calendarGrid">
+            <!-- Rendered via JS -->
+          </div>
+
+          <div class="calendar-legend">
+            <span><i class="dot green-dot"></i> Pemasukan</span>
+            <span><i class="dot red-dot"></i> Pengeluaran</span>
+            <span><i class="dot" style="background: #128568; outline: 2px solid #b7e3d5;"></i> Hari Ini</span>
+          </div>
+        </div>
+
+        <!-- Detail Transaksi Pada Tanggal yang Dipilih -->
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="calendarSelectedDateTitle">Aktivitas Tanggal Terpilih</h2>
+              <p id="calendarSelectedDateTotal">Pemasukan & Pengeluaran hari ini</p>
+            </div>
+          </div>
+          <div class="transaction-list" id="calendarSelectedDateList">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 BudgetPas — Prototipe Website Pengelolaan Keuangan Mahasiswa. <b>Kelola keuangan, raih masa depan.</b>
+    </footer>
+  </main>
+</div>
+
+<!-- Toast Notifications Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+
+</body>
+</html>

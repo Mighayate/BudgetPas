@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pengaturan & Data — BudgetPas</title>
+  
+  <!-- Fonts: DM Sans & Manrope -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-page="settings">
+
+<div class="app-shell">
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- Sidebar Navigasi -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-icon">▣</span>
+      <span>Budget<span class="brand-light">Pas</span></span>
+      <span class="brand-tag">WEB APP</span>
+    </div>
+
+    <div class="side-caption">MENU UTAMA</div>
+    
+    <nav>
+      <a href="index.html" data-view="dashboard">
+        <span class="nav-icon">⌂</span>
+        <span>Dashboard</span>
+      </a>
+      <a href="budgets.html" data-view="budgets">
+        <span class="nav-icon">▦</span>
+        <span>Anggaran Bulanan</span>
+      </a>
+      <a href="transactions.html" data-view="transactions">
+        <span class="nav-icon">↕</span>
+        <span>Catat Transaksi</span>
+      </a>
+      <a href="reports.html" data-view="reports">
+        <span class="nav-icon">▥</span>
+        <span>Laporan Pengeluaran</span>
+      </a>
+      <a href="reminders.html" data-view="reminders">
+        <span class="nav-icon">♧</span>
+        <span>Pengingat Anggaran</span>
+      </a>
+      <a href="goals.html" data-view="goals">
+        <span class="nav-icon">◎</span>
+        <span>Target Tabungan</span>
+      </a>
+      <a href="calendar.html" data-view="calendar">
+        <span class="nav-icon">📅</span>
+        <span>Kalender Keuangan</span>
+      </a>
+      <a href="settings.html" data-view="settings" class="active">
+        <span class="nav-icon">⚙</span>
+        <span>Pengaturan & Data</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="student-card">
+        <div class="avatar" id="sidebarAvatar">A</div>
+        <div class="student-info">
+          <b id="sidebarStudentName">Andi Pratama</b>
+          <small>Mahasiswa Kos</small>
+        </div>
+      </div>
+      <div class="side-note">
+        <span>✦</span>
+        <p><b>Kelola uang, raih masa depan.</b><br>Mulai dari kebiasaan kecil hari ini.</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">☰</button>
+        <div class="mobile-brand">▣ BudgetPas</div>
+        <div class="breadcrumb">
+          Keuangan Saya <span>/</span> <b id="breadcrumbTitle">Pengaturan & Data</b>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <span class="status-pill">Data tersimpan di browser</span>
+        <div class="top-avatar">A</div>
+        <div class="profile-name">
+          <b id="topbarStudentName">Andi Pratama</b>
+          <small>Mahasiswa</small>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <section class="page-content">
+      <div class="view-section active" id="view-settings">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">KONFIGURASI PROTOTIPE</div>
+            <h1>Pengaturan & Manajemen Data</h1>
+            <p class="muted">Kelola data profil, buat cadangan data (backup), atau reset ke data contoh.</p>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <!-- Profil Mahasiswa -->
+          <div class="settings-card">
+            <h3>Profil Mahasiswa</h3>
+            <p>Ubah nama dan informasi profil yang ditampilkan pada dashboard dan aplikasi.</p>
+            <form id="settingsProfileForm" class="form-stack">
+              <div class="form-group">
+                <label for="settingProfileName">Nama Pengguna</label>
+                <input id="settingProfileName" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="settingProfileRole">Status / Jurusan</label>
+                <input id="settingProfileRole" class="form-input" placeholder="Contoh: Mahasiswa Kos">
+              </div>
+              <div class="form-group">
+                <label for="settingMonthlyAllowance">Referensi Uang Saku Bulanan (Rp)</label>
+                <div class="input-prefix">
+                  <span>Rp</span>
+                  <input id="settingMonthlyAllowance" inputmode="numeric" class="form-input">
+                </div>
+              </div>
+              <button class="btn primary" type="submit">Simpan Profil</button>
+            </form>
+          </div>
+
+          <!-- Manajemen Data Prototipe -->
+          <div class="settings-card">
+            <h3>Cadangan Data (Backup & Restore)</h3>
+            <p>
+              Karena prototipe ini berjalan secara murni di sisi browser (Pure Web App menggunakan LocalStorage), kamu dapat menyimpan datamu ke dalam file JSON atau memulihkannya kapan saja.
+            </p>
+            <div class="data-actions">
+              <button class="btn secondary" onclick="StorageManager.exportJSON()">
+                📥 Ekspor Data (JSON)
+              </button>
+              <label class="btn outline" style="margin: 0; cursor: pointer;">
+                📤 Impor Data (JSON)
+                <input type="file" id="importJsonInput" accept=".json" style="display: none;" onchange="
+                  const file = this.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                      if (StorageManager.importJSON(e.target.result)) {
+                        UIManager.showToast('Data berhasil diimpor!', 'success');
+                        UIManager.renderAll();
+                      } else {
+                        UIManager.showToast('Gagal mengimpor file JSON.', 'error');
+                      }
+                    };
+                    reader.readAsText(file);
+                  }
+                ">
+              </label>
+              <button class="btn outline" onclick="
+                if (confirm('Muat ulang seluruh data dari Data Dummy JSON (Andi Pratama)? Perubahan saat ini akan direset ke kondisi awal.')) {
+                  StorageManager.resetToDummy();
+                  UIManager.renderAll();
+                  UIManager.showToast('Data berhasil direset ke Data Dummy JSON.', 'success');
+                }
+              ">
+                ↺ Reset ke Data Dummy
+              </button>
+            </div>
+
+            <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border-line);">
+              <h4 style="font-size: 13px; color: var(--accent-red); margin-bottom: 6px;">Zona Berbahaya</h4>
+              <p style="margin-bottom: 12px;">Hapus seluruh transaksi, anggaran, dan target untuk memulai dari nol.</p>
+              <button class="btn danger small" onclick="
+                if (confirm('Apakah kamu yakin ingin mengosongkan semua data? Tindakan ini tidak dapat dibatalkan.')) {
+                  StorageManager.save({ profile: { name: 'Mahasiswa', role: 'Mahasiswa Kos' }, budgets: [], transactions: [], goals: [] });
+                  UIManager.renderAll();
+                  UIManager.showToast('Semua data berhasil dikosongkan.', 'warning');
+                }
+              ">
+                Kosongkan Semua Data
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panduan & Arsitektur Prototipe -->
+        <div class="panel" style="margin-top: 24px;">
+          <h2 style="margin-bottom: 10px;">Tentang Prototipe BudgetPas Pure Web App</h2>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.7;">
+            Website ini dirancang khusus sebagai prototipe aplikasi pengelolaan keuangan mahasiswa yang dibangun secara <b>Pure Web Application</b> menggunakan <b>HTML5, CSS3, dan Vanilla JavaScript (ES6)</b> dengan arsitektur <b>Multi-Page Application</b>. 
+            Setiap tampilan dipecah menjadi file HTML terpisah yang terhubung secara rapi melalui navigasi browser dan berbagi data secara tersinkronisasi lewat <b>LocalStorage & Data Dummy JSON</b>.
+          </p>
+          <div style="margin-top: 14px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <span class="status-pill">Multi-Page HTML</span>
+            <span class="status-pill">Penyimpanan Browser (LocalStorage)</span>
+            <span class="status-pill">Data Dummy JSON</span>
+            <span class="status-pill">Visualisasi Chart.js</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      © 2026 BudgetPas — Prototipe Website Pengelolaan Keuangan Mahasiswa. <b>Kelola keuangan, raih masa depan.</b>
+    </footer>
+  </main>
+</div>
+
+<!-- Toast Notifications Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- JavaScript -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
