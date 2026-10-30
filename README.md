@@ -167,23 +167,33 @@ Buka alamat `http://localhost:5000` pada browser Anda.
 
 ## 📂 Struktur Berkas Proyek
 
-Struktur proyek dibuat sangat bersih dan mudah dipelajari oleh siapa saja:
+Struktur proyek dipecah menjadi berkas HTML terpisah (*Multi-Page Architecture*) yang rapi dan mudah dipelajari:
 
 ```text
 BudgetPas/
 │
-├── index.html           # Berkas antarmuka utama (Semantic HTML5 & SPA Containers)
+├── .gitignore           # Konfigurasi pengabaian berkas sementara Git
+├── LICENSE              # Lisensi Open Source (MIT License)
+├── README.md            # Dokumentasi lengkap & siap publikasi
+│
+├── index.html           # Halaman 1: Dashboard Keuangan
+├── budgets.html         # Halaman 2: Anggaran Bulanan
+├── transactions.html    # Halaman 3: Catat Transaksi (Pemasukan & Pengeluaran)
+├── reports.html         # Halaman 4: Laporan Pengeluaran & Grafik
+├── reminders.html       # Halaman 5: Pengingat Anggaran (<80%, 80-99%, >=100%)
+├── goals.html           # Halaman 6: Target Tabungan
+├── calendar.html        # Halaman 7: Kalender Aktivitas Keuangan
+├── settings.html        # Halaman 8: Pengaturan, Profil & Ekspor/Impor JSON
+├── dashboard.html       # Redirect helper ke index.html
 │
 ├── css/
-│   └── style.css        # Seluruh stylesheet, variabel warna, layout, dan responsivitas
+│   └── style.css        # Stylesheet terpusat, variabel warna, layout, dan responsivitas
 │
 ├── js/
-│   └── app.js           # Seluruh logika bisnis, kalkulasi finansial, dan interaksi DOM
+│   └── app.js           # Logika aplikasi modular terpusat (Storage, Finance, Chart, Calendar, UI)
 │
-├── data/
-│   └── sample-data.json # Data Dummy JSON awal (profil, anggaran, 14 transaksi, 3 target)
-│
-└── README.md            # Dokumentasi lengkap proyek
+└── data/
+    └── sample-data.json # Data Dummy JSON acuan prototipe mahasiswa
 ```
 
 ---
