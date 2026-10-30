@@ -9,14 +9,15 @@
 [![JavaScript](https://img.shields.io/badge/JavaScript_ES6+-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)](https://www.chartjs.org/)
 [![Storage](https://img.shields.io/badge/Storage-LocalStorage_%26_JSON-063F35?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-[![License: MIT](https://img.shields.io/badge/License-MIT-128568?style=for-the-badge)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Multi--Page%20Web%20App-128568?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Learn/HTML)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
 <br>
 
 **Prototipe Pure Web Application (Multi-Page Architecture)**  
-*Dibuat untuk membantu mahasiswa kos mengatur uang bulanan secara terstruktur, transparan, dan terbebas dari krisis akhir bulan.*
+*Aplikasi web pengelolaan keuangan pribadi yang dirancang khusus untuk membantu mahasiswa kos mengatur uang bulanan secara terstruktur, transparan, dan terbebas dari masalah kehabisan uang di akhir bulan.*
 
-[Fitur Utama](#-fitur-utama-sesuai-prd) • [Cara Menjalankan](#-cara-menjalankan-langsung) • [Struktur Proyek](#-struktur-berkas-proyek) • [Arsitektur Kode](#-arsitektur-kode--aliran-data) • [Deploy ke GitHub Pages](#-deploy-ke-github-pages-gratis)
+[Fitur Utama](#-fitur-utama-sesuai-prd) • [Daftar Halaman](#-daftar-halaman-aplikasi) • [Cara Menjalankan](#-cara-menjalankan-langsung) • [Struktur Proyek](#-struktur-berkas-proyek) • [Arsitektur & Data](#-arsitektur-kode--aliran-data) • [Deploy GitHub Pages](#-deploy-ke-github-pages-gratis)
 
 </div>
 
@@ -26,6 +27,7 @@
 - [Latar Belakang & Masalah](#-latar-belakang--masalah)
 - [Solusi yang Ditawarkan](#-solusi-yang-ditawarkan)
 - [Fitur Utama (Sesuai PRD)](#-fitur-utama-sesuai-prd)
+- [Daftar Halaman Aplikasi](#-daftar-halaman-aplikasi)
 - [Teknologi yang Digunakan](#-teknologi-yang-digunakan)
 - [Cara Menjalankan (Langsung)](#-cara-menjalankan-langsung)
 - [Struktur Berkas Proyek](#-struktur-berkas-proyek)
@@ -38,54 +40,55 @@
 
 ## 📌 Latar Belakang & Masalah
 
-Mahasiswa, khususnya mahasiswa yang tinggal di kos, umumnya memiliki anggaran uang saku bulanan yang terbatas. Namun, aktivitas harian seperti makan, transportasi, print tugas kuliah, fotokopi modul, jajan santai, dan nongkrong sering kali tidak tercatat secara rapi.
+Mahasiswa, khususnya mahasiswa yang tinggal di rumah kos, umumnya memiliki anggaran uang saku bulanan yang terbatas. Namun, kebutuhan harian seperti makan, transportasi, fotokopi modul kuliah, beli buku, jajan sore, hingga nongkrong santai sering kali tidak tercatat secara rapi.
 
-Beberapa permasalahan utama yang sering dialami:
-1. **Buta Arus Kas:** Mahasiswa kesulitan mengetahui sisa uang riil yang masih bisa dibelanjakan.
-2. **Tanpa Batas Kategori:** Pengeluaran hiburan sering kali tanpa sadar memakan jatah makan pokok dan kebutuhan akademik.
-3. **Kebocoran Pengeluaran Kecil:** Uang parkir, jajan sore, atau kopi kekinian yang tampak sepele terakumulasi menjadi nominal besar.
-4. **Tanpa Pengingat Anggaran:** Tidak ada sistem peringatan dini ketika anggaran suatu pos sudah hampir habis.
-5. **Kesulitan Menabung:** Uang bulanan habis sebelum sempat disisihkan untuk dana darurat atau impian masa depan.
+Beberapa permasalahan utama yang kerap dihadapi:
+1. **Buta Arus Kas:** Mahasiswa tidak mengetahui persis berapa sisa uang riil yang masih aman untuk dibelanjakan.
+2. **Tanpa Batas Kategori:** Pengeluaran hiburan dan jajan sering kali tanpa sadar menggerus jatah makan pokok dan kebutuhan akademik.
+3. **Kebocoran Pengeluaran Kecil:** Biaya parkir, air mineral, atau jajan ringan yang terkesan sepele ternyata terakumulasi menjadi nominal yang sangat besar di akhir bulan.
+4. **Tanpa Pengingat Anggaran:** Tidak adanya alarm atau peringatan dini saat kuota pengeluaran untuk suatu pos kebutuhan sudah hampir habis.
+5. **Sulit Menabung:** Uang bulanan habis sebelum sempat disisihkan untuk tabungan masa depan atau dana darurat.
 
 ---
 
 ## 💡 Solusi yang Ditawarkan
 
-**BudgetPas** menghadirkan solusi berupa aplikasi web yang sederhana, cepat, dan praktis:
-- **Zero-Setup Pure Web App:** Tanpa perlu install server backend, virtual environment, atau konfigurasi database.
-- **Client-Side Persistence:** Menggunakan **LocalStorage API** dan format **JSON** standar. Data aman tersimpan langsung di browser pengguna tanpa biaya server.
-- **7 Modul Lengkap Sesuai PRD:** Dashboard finansial, anggaran kategori dinamis, pencatatan transaksi harian, laporan visual interaktif, pengingat otomatis (*threshold rule*), target tabungan, dan kalender aktivitas keuangan.
+**BudgetPas** menghadirkan solusi digital yang sederhana, ringan, dan praktis:
+- **Zero-Setup Pure Web App:** Berjalan 100% langsung di browser tanpa instalasi backend Python/Flask, dependensi pip, atau database SQLite yang rumit.
+- **Client-Side Persistence:** Menggunakan **LocalStorage API** dan format **JSON** standar. Data tersimpan aman langsung di perangkat pengguna secara persisten dan cepat.
+- **Multi-Page Architecture:** Setiap fitur memiliki berkas HTML tersendiri yang rapi, modular, dan mudah dipelajari oleh mahasiswa maupun pengembang pemula.
+- **Sinkronisasi Data Otomatis:** Perubahan data pada satu halaman (misal: tambah transaksi) langsung otomatis menyinkronkan saldo, grafik, dan anggaran di seluruh halaman lainnya.
 
 ---
 
 ## 🎯 Fitur Utama (Sesuai PRD)
 
 ### 1. 📊 Dashboard Keuangan
-* **4 Kartu Metrik Ringkasan:** Menampilkan *Uang Masuk*, *Total Pengeluaran*, *Sisa Uang (Saldo = Pemasukan − Pengeluaran)*, dan jumlah *Target Tabungan*.
-* **Doughnut Chart (Chart.js):** Visualisasi proporsi pengeluaran per kategori secara *real-time* lengkap dengan total nominal di tengah grafik.
-* **Ringkasan Anggaran:** Memantau 5 kategori anggaran utama beserta progres bar pemakaian.
-* **Transaksi Terakhir:** Daftar transaksi terbaru dengan penanda visual panah pemasukan (↗ hijau) dan pengeluaran (↘ merah).
-* **Tips Keuangan Mahasiswa:** Edukasi finansial praktis untuk kebiasaan hemat sehari-hari.
+* **4 Kartu Metrik Utama:** Menampilkan *Uang Masuk*, *Total Pengeluaran*, *Sisa Uang (Saldo = Pemasukan − Pengeluaran)*, dan jumlah *Target Tabungan*.
+* **Doughnut Chart (Chart.js):** Visualisasi proporsi pengeluaran per kategori secara *real-time* dengan total pengeluaran tertera di tengah diagram.
+* **Ringkasan Anggaran:** Memantau 5 pos anggaran teratas beserta progres bar pemakaian.
+* **Transaksi Terakhir:** Menampilkan 6 transaksi terbaru lengkap dengan penanda visual panah pemasukan (↗ hijau) dan pengeluaran (↘ merah).
+* **Tips Finansial Mahasiswa:** Edukasi finansial harian untuk menumbuhkan kebiasaan hemat.
 
 ### 2. ▦ Anggaran Bulanan
 * Tiga kartu ringkasan: *Total Anggaran*, *Total Terpakai*, dan *Sisa Anggaran*.
 * Atur batas pengeluaran per kategori (*Makan, Transportasi, Kuliah, Hiburan, Tabungan, Kos, Laundry, dll.*).
-* Dilengkapi *color picker* dan *palette swatch* untuk mengatur warna identitas setiap kategori.
-* Menghitung sisa nominal dan persentase penggunaan secara dinamis.
+* Dilengkapi *color picker* dan *palette swatch* untuk memilih warna identitas setiap kategori.
+* Menghitung sisa nominal dan persentase penggunaan secara dinamis dengan progres bar interaktif.
 
 ### 3. ↕ Catat Transaksi (Pemasukan & Pengeluaran)
-* Tombol beralih instan: **↘ Pengeluaran** atau **↗ Pemasukan**.
-* Pemilihan tanggal fleksibel (otomatis terisi tanggal hari ini).
-* Dropdown kategori dinamis yang tersinkronisasi otomatis dengan anggaran aktif.
-* Format otomatis mata uang Rupiah (`Rp`) saat mengetik angka.
+* Tombol beralih cepat: **↘ Pengeluaran** atau **↗ Pemasukan**.
+* Input tanggal transaksi (otomatis terisi tanggal hari ini).
+* Pilihan kategori dinamis yang tersinkronisasi otomatis dengan pos anggaran yang aktif.
+* Auto-formatting mata uang Rupiah (`Rp`) saat mengetik angka nominal.
 * Kolom catatan/keterangan transaksi opsional.
 * Riwayat transaksi lengkap dengan **pencarian teks**, **filter jenis transaksi**, serta **tombol hapus** dengan konfirmasi dialog.
 
 ### 4. ▥ Laporan Pengeluaran
-* **Bar Chart Pengeluaran per Kategori:** Grafik batang terurut dari alokasi pengeluaran terbesar.
-* **Rincian Persentase:** Menampilkan persentase kontribusi setiap pos terhadap total pengeluaran.
+* **Bar Chart Pengeluaran per Kategori:** Diagram batang terurut otomatis dari pos pengeluaran nominal terbesar.
+* **Rincian Persentase:** Menampilkan persentase kontribusi setiap kategori terhadap total pengeluaran.
 * **Line Chart Tren Bulanan:** Grafik garis pergerakan total pengeluaran dari bulan ke bulan (Agustus, September, Oktober).
-* **Analisis Finansial Otomatis:** Sistem menganalisis kategori pengeluaran terbesar dan memberikan rekomendasi evaluasi.
+* **Analisis Finansial Otomatis:** Sistem mengevaluasi pos pengeluaran terbesar dan memberikan saran penghematan.
 
 ### 5. ♧ Pengingat Anggaran (Threshold Alert System)
 Menerapkan aturan evaluasi status otomatis sesuai **PRD Section 5.5**:
@@ -93,54 +96,70 @@ Menerapkan aturan evaluasi status otomatis sesuai **PRD Section 5.5**:
 | Persentase Pemakaian | Status Sistem | Penanda Warna | Arti Kondisi |
 |---|---|---|---|
 | **< 80%** | **Aman** | 🟢 Hijau | Pengeluaran masih berada dalam batas wajar |
-| **80% – 99%** | **Hampir Habis** | 🟡 Kuning | Peringatan dini! Anggaran pos sudah menipis |
+| **80% – 99%** | **Hampir Habis** | 🟡 Kuning | Peringatan dini! Anggaran pos sudah mulai menipis |
 | **≥ 100%** | **Melebihi Anggaran** | 🔴 Merah | Bahaya! Pengeluaran telah melampaui batas anggaran |
 
-* Dilengkapi banner dinamis (*alert banner*) di bagian atas yang otomatis menghitung berapa banyak pos pengeluaran yang butuh perhatian segera.
+* Dilengkapi banner dinamis (*alert banner*) di bagian atas yang otomatis memberitahu jumlah pos pengeluaran yang butuh perhatian segera.
 
 ### 6. ◎ Target Tabungan
-* Menentukan target tujuan finansial (*Dana Darurat, Laptop Skripsi, Liburan Semester*).
+* Menentukan target finansial (*Dana Darurat, Laptop Skripsi, Liburan Semester*).
 * Menentukan nominal target dan tenggat waktu pencapaian (*deadline*).
-* Tombol inline `＋ Tambah Tabungan` langsung pada kartu target untuk menyicil tabungan.
+* Tombol inline `＋ Tambah Tabungan` langsung pada kartu target untuk menyicil tabungan kapan saja.
 * Rumus progres:  
   $$\text{Progres (\%)} = \min\left(100\%, \left(\frac{\text{Jumlah Tabungan}}{\text{Target Tabungan}}\right) \times 100\%\right)$$
-* Otomatis berstatus **(Tercapai!)** ketika nominal target terpenuhi.
+* Otomatis ditandai **(Tercapai!)** ketika nominal target terpenuhi.
 
 ### 7. 📅 Kalender Keuangan
-* Tampilan kalender bulanan interaktif dengan tombol navigasi `‹`, `Hari Ini`, dan `›`.
+* Tampilan kalender bulanan interaktif dengan kontrol navigasi `‹`, `Hari Ini`, dan `›`.
 * Penanda visual otomatis pada tanggal transaksi:
   - 🟢 **Titik Hijau:** Menandai adanya transaksi pemasukan pada tanggal tersebut.
   - 🔴 **Titik Merah:** Menandai adanya transaksi pengeluaran pada tanggal tersebut.
   - 🎯 **Aksen Hijau:** Menandai tanggal hari ini.
-* **Interaktivitas Klik Tanggal:** Klik tanggal mana saja pada kalender untuk melihat rincian aktivitas transaksi, total uang masuk, dan total uang keluar pada tanggal tersebut.
+* **Interaktivitas Klik Tanggal:** Klik tanggal mana saja pada kalender untuk melihat rincian aktivitas transaksi, total uang masuk, dan total uang keluar pada hari itu, lengkap dengan tombol cepat *Catat di tanggal ini*.
 
 ### 8. ⚙️ Pengaturan & Manajemen Data
 * **Ubah Profil Mahasiswa:** Mengubah nama mahasiswa, status perkuliahan, dan referensi uang saku bulanan.
-* **📥 Ekspor Data (JSON):** Mengunduh seluruh data (transaksi, anggaran, target, profil) ke berkas `.json` lokal.
+* **📥 Ekspor Data (JSON):** Mengunduh seluruh data (transaksi, anggaran, target, profil) ke berkas `.json` lokal sebagai backup.
 * **📤 Impor Data (JSON):** Memulihkan data dari berkas backup JSON yang pernah diunduh.
 * **↺ Reset ke Data Dummy:** Mengembalikan kondisi data kembali ke data simulasi awal mahasiswa (*Andi Pratama*) untuk keperluan demonstrasi atau pengujian ulang.
-* **Kosongkan Data:** Menghapus seluruh data untuk mulai mencatat dari lembar kosong.
+* **Kosongkan Data:** Menghapus seluruh data untuk mulai mencatat dari awal.
+
+---
+
+## 📑 Daftar Halaman Aplikasi
+
+Aplikasi dipecah menjadi berkas HTML terpisah yang saling terhubung:
+
+| Halaman | Berkas HTML | Deskripsi & Fungsi Utama |
+|---|---|---|
+| **Dashboard** | [`index.html`](index.html) | Ringkasan saldo, doughnut chart, anggaran, transaksi terkini, dan tips |
+| **Anggaran Bulanan** | [`budgets.html`](budgets.html) | Alokasi batas anggaran per pos, progres bar, form tambah/edit anggaran |
+| **Catat Transaksi** | [`transactions.html`](transactions.html) | Form input transaksi harian, tabel riwayat, fitur pencarian & filter |
+| **Laporan** | [`reports.html`](reports.html) | Bar chart kategori, persentase rincian, line chart tren multi-bulan |
+| **Pengingat** | [`reminders.html`](reminders.html) | Banner peringatan otomatis, evaluasi batas 80% dan 100% |
+| **Target Tabungan** | [`goals.html`](goals.html) | Akumulasi tabungan, kartu target, progres capaian, form cicil tabungan |
+| **Kalender** | [`calendar.html`](calendar.html) | Kalender aktivitas harian, titik penanda transaksi, detail per tanggal |
+| **Pengaturan** | [`settings.html`](settings.html) | Edit profil, Ekspor JSON, Impor JSON, Reset Data Dummy, Kosongkan Data |
+| **Redirect Helper** | [`dashboard.html`](dashboard.html) | Berkas pembantu yang otomatis mengarahkan ke `index.html` |
 
 ---
 
 ## 🛠 Teknologi yang Digunakan
 
-Aplikasi ini dibangun murni menggunakan standar web modern tanpa *framework* yang rumit:
-
-| Lapisan | Teknologi | Penjelasan |
+| Komponen | Teknologi | Penjelasan |
 |---|---|---|
-| **Struktur** | **HTML5 Semantik** | Kerangka antarmuka berbasis Single Page Application (SPA) container |
-| **Tampilan** | **CSS3 Modern** | CSS Variables, Flexbox, CSS Grid, responsive media queries |
-| **Logika & Interaksi** | **Vanilla JavaScript (ES6+)** | Modul JavaScript bersih, modular, tanpa dependensi *build tool* (npm/webpack) |
-| **Penyimpanan** | **Browser LocalStorage & JSON** | Penyimpanan data persisten di sisi klien (*client-side cache*) |
-| **Visualisasi** | **Chart.js (CDN)** | Grafik interaktif Doughnut, Bar, dan Line Chart |
-| **Tipografi** | **Google Fonts** | `DM Sans` (keterbacaan antarmuka) & `Manrope` (angka & judul tebal) |
+| **Struktur** | **HTML5 Semantik** | Halaman-halaman modular terpisah (*Multi-Page Architecture*) |
+| **Tampilan** | **CSS3 Modern** | CSS Variables, Flexbox, CSS Grid, responsif desktop & mobile |
+| **Logika** | **Vanilla JavaScript (ES6+)** | Modular tanpa framework luar, bersih, mudah dipelajari |
+| **Penyimpanan** | **Browser LocalStorage & JSON** | Data persisten di sisi klien (*client-side cache*) tanpa database server |
+| **Visualisasi** | **Chart.js (CDN)** | Diagram Doughnut, Bar Chart, dan Line Chart interaktif |
+| **Tipografi** | **Google Fonts** | `DM Sans` (kenyamanan membaca) & `Manrope` (angka & judul tebal) |
 
 ---
 
 ## 🚀 Cara Menjalankan (Langsung)
 
-Aplikasi ini dirancang dengan prinsip **Zero Setup** — dapat langsung dicoba dalam hitungan detik:
+Aplikasi ini mengusung prinsip **Zero Setup** — dapat langsung dicoba dalam hitungan detik tanpa instalasi software tambahan:
 
 ### Opsi 1: Buka Langsung di Browser (Paling Cepat)
 1. Unduh atau clone repositori ini:
@@ -149,15 +168,15 @@ Aplikasi ini dirancang dengan prinsip **Zero Setup** — dapat langsung dicoba d
    ```
 2. Buka folder `BudgetPas`.
 3. Klik dua kali (*double click*) pada berkas **`index.html`**.
-4. Aplikasi akan langsung berjalan di browser Anda (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari, dll.).
+4. Aplikasi langsung berjalan di browser favorit Anda (Google Chrome, Microsoft Edge, Mozilla Firefox, Safari, dll.).
 
 ### Opsi 2: Menggunakan VS Code Live Server
 1. Buka folder `BudgetPas` di **Visual Studio Code**.
-2. Pastikan ekstensi **Live Server** telah terpasang.
+2. Pastikan ekstensi **Live Server** sudah terpasang.
 3. Klik kanan pada berkas `index.html` lalu pilih **"Open with Live Server"**.
 
 ### Opsi 3: Menggunakan Python HTTP Server (Opsional)
-Jika Anda ingin menjalankan server lokal sederhana:
+Jika ingin menjalankan server lokal sederhana:
 ```bash
 python -m http.server 5000
 ```
@@ -166,8 +185,6 @@ Buka alamat `http://localhost:5000` pada browser Anda.
 ---
 
 ## 📂 Struktur Berkas Proyek
-
-Struktur proyek dipecah menjadi berkas HTML terpisah (*Multi-Page Architecture*) yang rapi dan mudah dipelajari:
 
 ```text
 BudgetPas/
@@ -206,48 +223,48 @@ BudgetPas/
 flowchart TD
     A["data/sample-data.json<br>(Data Dummy Awal)"] -->|Inisialisasi Pertama / Reset| B[("Browser LocalStorage<br>(budgetpas_data_v1)")]
     B -->|StorageManager.load| C["FinanceEngine<br>(Hitung Saldo, Status Anggaran, Target)"]
-    C -->|Render Data| D["Antarmuka Pengguna (UI)<br>(Dashboard, Anggaran, Kalender, dll.)"]
+    C -->|Render Data Terpusat| D["Halaman Multi-Page HTML<br>(index, budgets, transactions, dll.)"]
     D -->|Input Transaksi / Anggaran Baru| E["StorageManager.save"]
-    E -->|Perbarui State| B
+    E -->|Perbarui State Otomatis| B
     B -->|Ekspor| F["File Unduhan<br>(budgetpas-data.json)"]
     G["File Cadangan JSON"] -->|Impor| B
 ```
 
-### Modul-Modul di `js/app.js`
+### Modul-Modul Utama di `js/app.js`
 
 1. **`DUMMY_DATA` & `StorageManager`**  
    Menyediakan data acuan awal mahasiswa dan mengelola operasi baca-tulis ke `localStorage`. Dilengkapi fungsi `exportJSON()`, `importJSON()`, serta `resetToDummy()`.
 2. **`Formatters`**  
-   Menyediakan fungsi pembantu format mata uang Rupiah (`Formatters.rupiah(val)`), tanggal lokal Indonesia (`Formatters.dateIndo(date)`), dan pemilihan emoji kategori.
+   Fungsi pembantu untuk memformat nominal ke Rupiah (`Formatters.rupiah(val)`), format tanggal Indonesia (`Formatters.dateIndo(date)`), dan pencocokan emoji kategori.
 3. **`FinanceEngine`**  
-   Jantung kalkulasi matematis: menghitung total pemasukan, pengeluaran, saldo kas, persentase penggunaan per pos anggaran, klasifikasi status peringatan (<80%, 80%-99%, >=100%), dan progres capaian target tabungan.
+   Pusat kalkulasi finansial: menghitung saldo kas, agregasi pengeluaran per kategori, evaluasi batas pengingat (<80%, 80%-99%, ≥100%), dan progres capaian target tabungan.
 4. **`ChartManager`**  
-   Mengatur siklus hidup grafik Chart.js: membuat Doughnut Chart di Dashboard, Bar Chart dan Line Chart di Laporan, serta memastikan penghancuran (*destroy*) canvas lama saat data diperbarui agar tidak terjadi *glitch*.
+   Mengatur siklus hidup grafik Chart.js: membuat Doughnut Chart di Dashboard, Bar Chart dan Line Chart di Laporan, serta memastikan penghancuran (*destroy*) canvas lama sebelum render ulang agar memori efisien.
 5. **`CalendarManager`**  
-   Menghitung jumlah hari, hari pertama dalam minggu, menghasilkan grid kalender dinamis, memetakan titik pemasukan/pengeluaran ke tanggal yang sesuai, dan menangani event klik detail tanggal.
-6. **`UIManager` (Router & DOM Handler)**  
-   Menerapkan Single Page Application (SPA) berbasis URL Hash (`#dashboard`, `#budgets`, dll.). Menangani event submit form, filter pencarian tabel, update breadcrumb, dan menampilkan animasi *Toast Notification*.
+   Menghitung hari dalam bulan, menghasilkan grid kalender dinamis, memetakan titik pemasukan/pengeluaran ke tanggal terkait, dan menangani pemilihan tanggal.
+6. **`UIManager` (Multi-Page Controller & DOM Handler)**  
+   Mendeteksi halaman aktif via atribut `data-page` pada `<body>`, memberikan highlight aktif pada menu sidebar, menangani submit formulir, filter pencarian tabel, auto-formatting mata uang, integrasi query parameter URL (`?date=...`), dan animasi *Toast Notification*.
 
 ---
 
 ## 🌐 Deploy ke GitHub Pages (Gratis)
 
-Aplikasi ini 100% siap di-*hosting* secara gratis di **GitHub Pages** tanpa konfigurasi server:
+Aplikasi ini 100% siap di-*hosting* secara gratis di **GitHub Pages** tanpa konfigurasi server tambahan:
 
 1. Buat repositori baru di GitHub dengan nama `BudgetPas`.
-2. Unggah seluruh isi folder proyek ke repositori tersebut:
+2. Buka terminal di folder proyek, lalu jalankan:
    ```bash
    git init
    git add .
-   git commit -m "feat: initial release of BudgetPas Pure Web App"
+   git commit -m "feat: release BudgetPas Multi-Page Web App"
    git branch -M main
    git remote add origin https://github.com/username/BudgetPas.git
    git push -u origin main
    ```
-3. Di halaman repositori GitHub, buka tab **Settings** ➔ **Pages**.
+3. Buka repositori Anda di GitHub, lalu klik tab **Settings** ➔ **Pages**.
 4. Pada bagian **Build and deployment**, pilih Source: **Deploy from a branch**.
 5. Pilih branch **`main`** dan folder **`/(root)`**, lalu klik **Save**.
-6. Dalam beberapa menit, website Anda sudah aktif dan dapat diakses publik di:
+6. Dalam 1–2 menit, website Anda sudah aktif dan dapat diakses online di:
    ```text
    https://username.github.io/BudgetPas/
    ```
