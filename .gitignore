@@ -13,3 +13,17 @@ desktop.ini
 *.log
 tmp/
 temp/
+
+# Python artifacts (in case someone runs a local server)
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.db
+*.sqlite3
+
+# Node artifacts (if someone uses a static tool)
+node_modules/
+package-lock.json

@@ -164,7 +164,7 @@ Aplikasi ini mengusung prinsip **Zero Setup** — dapat langsung dicoba dalam hi
 ### Opsi 1: Buka Langsung di Browser (Paling Cepat)
 1. Unduh atau clone repositori ini:
    ```bash
-   git clone https://github.com/username/BudgetPas.git
+   git clone https://github.com/Mighayate/BudgetPas.git
    ```
 2. Buka folder `BudgetPas`.
 3. Klik dua kali (*double click*) pada berkas **`index.html`**.
@@ -251,22 +251,19 @@ flowchart TD
 
 Aplikasi ini 100% siap di-*hosting* secara gratis di **GitHub Pages** tanpa konfigurasi server tambahan:
 
-1. Buat repositori baru di GitHub dengan nama `BudgetPas`.
-2. Buka terminal di folder proyek, lalu jalankan:
+1. Pastikan seluruh berkas telah di-commit dan di-push ke GitHub:
    ```bash
-   git init
    git add .
    git commit -m "feat: release BudgetPas Multi-Page Web App"
-   git branch -M main
-   git remote add origin https://github.com/username/BudgetPas.git
-   git push -u origin main
+   git push origin main
    ```
-3. Buka repositori Anda di GitHub, lalu klik tab **Settings** ➔ **Pages**.
+2. Buka repositori Anda di GitHub: [`https://github.com/Mighayate/BudgetPas`](https://github.com/Mighayate/BudgetPas).
+3. Klik tab **Settings** ➔ **Pages** (di menu sebelah kiri).
 4. Pada bagian **Build and deployment**, pilih Source: **Deploy from a branch**.
 5. Pilih branch **`main`** dan folder **`/(root)`**, lalu klik **Save**.
 6. Dalam 1–2 menit, website Anda sudah aktif dan dapat diakses online di:
    ```text
-   https://username.github.io/BudgetPas/
+   https://mighayate.github.io/BudgetPas/
    ```
 
 ---
@@ -288,6 +285,8 @@ Mengacu pada panduan desain PRD Section 7.1:
 ## 📄 Lisensi & Penulis
 
 Proyek ini dirilis di bawah lisensi [MIT License](LICENSE) — bebas digunakan, dipelajari, dan dikembangkan untuk keperluan akademik maupun portofolio pribadi.
+
+**Author:** [Kevin Adani (@Mighayate)](https://github.com/Mighayate)
 
 <div align="center">
 
